@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>log-page</title>
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <style>
+        *,
+        html {
+            margin: 0;
+            padding: 0;
+            border: 0;
+        }
+
+        html {
+            width: 100%;
+            height: 100%;
+        }
+
+        body {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            background-color: rgb(241, 235, 235);
+            color: rgb(0, 0, 0);
+        }
+
+        h1 {
+            font-family: Avenir, Helvetica, Arial, sans-serif;
+            font-size: 40px;
+            color: rgb(7, 7, 7);
+            text-align: center;
+
+        }
+
+       
+
+        a {
+         font-family: Avenir, Helvetica, Arial, sans-serif;
+         background-color: #b85b10;
+         border: none;
+         color: rgb(252, 252, 252);
+         padding: 10px 20px;
+         text-align: center;
+         text-decoration: none;
+         display: inline-block;
+         font-size: 20px;
+         margin: 4px 2px;
+         cursor: pointer;
+        }
+
+        p {
+            font-family: Avenir, Helvetica, Arial, sans-serif;
+            font-size: 50px;
+            color: rgb(0, 0, 0);
+
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="left">
+        <h1>Your log page</h1>
+        <div id="data">DATA</div>
+        <script> 
+        window.onload = function(){
+         $.get("characters2.json", function(data){
+            for (var i = 0; i < data.length; i++) {
+                $('#data').append('<p>title:' + data[i].title + '</p>');
+                $('#data').append('<p>description:' + data[i].description + '</p>');
+            }
+            console.log(typeof(data));
+            console.log(data);
+            return data;
+         });}
+
+         
+        </script>
+    </div>
+</body>
+</html>

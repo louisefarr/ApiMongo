@@ -5,7 +5,7 @@ const fs = require('fs');
 const MongoClient = require('mongodb').MongoClient;
 
 const url = 'mongodb://127.0.0.1:27017';
-const dbName = 'game-of-thrones';
+const dbName = 'admin';
 let db;
 
 MongoClient.connect(url, { useNewUrlParser: true }, { useUnifiedTopology: true } ,(err, client) => {
@@ -23,11 +23,11 @@ app.use(express.json());
 
 app.get('/', async (req,res) => {
   try {
-      const docs = await db.collection('characters').find({}).toArray()
+      const docs = await db.collection('game-of-thrones').find({}).toArray()
       let data = JSON.stringify(docs);
       fs.writeFileSync("characters2.json",data);
-
       res.status(200).json(docs);
+      res.render("index.html");
 
       /*fs.readFile(__dirname + "/index.html")
         .then(contents => {

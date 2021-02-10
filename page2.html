@@ -22,15 +22,23 @@
             width: 100%;
             height: 100%;
             position: relative;
-            background-color: rgb(241, 235, 235);
+            background-color: rgb(59, 56, 56);
             color: rgb(0, 0, 0);
         }
 
         h1 {
             font-family: Avenir, Helvetica, Arial, sans-serif;
-            font-size: 40px;
-            color: rgb(7, 7, 7);
+            font-size: 50px;
+            color: #ffffff;
             text-align: center;
+
+        }
+
+        h2 {
+            font-family: Avenir, Helvetica, Arial, sans-serif;
+            font-size: 30px;
+            color: #ffffff;
+        
 
         }
 
@@ -52,8 +60,12 @@
 
         p {
             font-family: Avenir, Helvetica, Arial, sans-serif;
-            font-size: 50px;
-            color: rgb(0, 0, 0);
+            padding: 10px 20px;
+            margin: 4px 2px;
+
+            font-size: 30px;
+            color:#c48f00;
+    
 
         }
 
@@ -62,14 +74,23 @@
 
 <body>
     <div class="left">
-        <h1>Your log page</h1>
-        <div id="data">DATA</div>
+        <h1>YOUR LOG PAGE</h1>
+        <ul class="list-group">
+            <li class="list-group-item"></li>
+        </ul>
+        <div id="data"></div>
+        <hr style="height: 3px; color: #839D2D; width: 50%; border: 1px dashed #000;">
         <script> 
         window.onload = function(){
          $.get("characters2.json", function(data){
             for (var i = 0; i < data.length; i++) {
-                $('#data').append('<p>title:' + data[i].title + '</p>');
-                $('#data').append('<p>description:' + data[i].description + '</p>');
+                $('#data').append('<h2> LOG ' + [i] + '</h2>');
+                $('#data').append('<hr style="height: 3px; color: #f8f8f8; width: 100%; border: 1px dashed #000;">');
+                $('#data').append('<p> incubationEnd : ' + data[i].incubationEnd + '</p>');
+                $('#data').append('<p> timer : ' + data[i].timer + '</p>');
+                $('#data').append('<p> busy : ' + data[i].busy + '</p>');
+                $('#data').append('<p> error : ' + data[i].error + '</p>');
+                $('#data').append('<hr style="height: 3px; color: #f8f8f8; width: 100%; border: 1px dashed #000;">');
             }
             console.log(typeof(data));
             console.log(data);
